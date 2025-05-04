@@ -8,37 +8,34 @@ import { JwtService } from '../../../shared/services/jwt/jwt.service';
 
 @injectable()
 export class LoginUserHandler {
-  constructor(
-    @inject('UserRepository')
-    private readonly repository: IUserRepository
-  ) {}
+	constructor(
+		@inject('UserRepository')
+		private readonly repository: IUserRepository,
+	) {}
 
-  async execute(
-    command: LoginUserRequest
-  ): Promise<Result<LoginUserResponse>> {
+	async execute(command: LoginUserRequest): Promise<Result<LoginUserResponse>> {
+		const { email, password } = command;
+		const user = await this.repository.findByEmail(email);
 
-    const { email, password } = command;
-    const user = await this.repository.findByEmail(email);
+		if (!user) {
+			return Result.fail(['Credenciais inválidas']);
+		}
 
-    if (!user) {
-      return Result.fail(['Credenciais inválidas']);
-    }
+		const isValidPassword = await bcrypt.compare(password, user.password);
+		if (!isValidPassword) {
+			return Result.fail(['Credenciais inválidas']);
+		}
 
-    const isValidPassword = await bcrypt.compare(password, user.password);
-    if (!isValidPassword) {
-      return Result.fail(['Credenciais inválidas']);
-    }
+		const { token, expiresAt } = JwtService.generateToken({
+			userId: user.id!,
+			email: user.email,
+		});
 
-    const { token, expiresAt } = JwtService.generateToken({
-      userId: user.id!,
-      email: user.email,
-    });
-
-    return Result.ok<LoginUserResponse>({ 
-      name: user.name,
-      email: user.email,
-      token: token,
-      expiresAt: expiresAt
-    });
-  }
+		return Result.ok<LoginUserResponse>({
+			name: user.name,
+			email: user.email,
+			token: token,
+			expiresAt: expiresAt,
+		});
+	}
 }

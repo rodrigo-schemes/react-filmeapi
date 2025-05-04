@@ -6,18 +6,15 @@ import { LoginUserHandler } from './login-user.handler';
 import { Result } from '../../../shared/result-pattern';
 
 export const LoginUserController = {
-  login: async (
-      req: Request<{}, {}, LoginUserRequest>,
-      res: Response<Result<LoginUserResponse>>
-    ): Promise<void> => {
-    
-      const handler = container.resolve(LoginUserHandler);
-      const command: LoginUserRequest = req.body;
+	login: async (
+		req: Request<{}, {}, LoginUserRequest>,
+		res: Response<Result<LoginUserResponse>>,
+	): Promise<void> => {
+		const handler = container.resolve(LoginUserHandler);
+		const command: LoginUserRequest = req.body;
 
-      const result = await handler.execute(command);
+		const result = await handler.execute(command);
 
-      result.isSuccess
-      ? res.status(200).json(result)
-      : res.status(400).json(result);
-  }
+		result.isSuccess ? res.status(200).json(result) : res.status(400).json(result);
+	},
 };

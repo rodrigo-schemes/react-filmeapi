@@ -6,6 +6,11 @@ import { authRateLimiter } from '../../shared/middlewares/rate-limit';
 
 const router = Router();
 
-router.post('/login', authRateLimiter, validateRequest(LoginUserValidator), LoginUserController.login);
+router.post(
+	'/login',
+	authRateLimiter,
+	validateRequest(LoginUserValidator),
+	LoginUserController.login,
+);
 
 export default router;

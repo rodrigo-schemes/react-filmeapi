@@ -1,3 +1,3 @@
 export interface CreateUserResponse {
-    id: string;
+	id: string;
 }
