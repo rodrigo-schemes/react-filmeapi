@@ -12,7 +12,7 @@ export const validateRequest = (schema: ZodSchema) => {
         .flatMap(([_, val]: [string, any]) => val._errors);
 
       res.status(400).json(Result.fail(errors));
-      return
+      return;
     }
 
     req.body = result.data;

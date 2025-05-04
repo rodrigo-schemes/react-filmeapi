@@ -21,9 +21,7 @@ describe('CreateUserValidator', () => {
     });
 
     expect(result.success).toBe(false);
-    if (!result.success) {
-      expect(result.error.issues[0].message).toBe('Nome é obrigatório');
-    }
+    expect(result.error!.issues[0].message).toBe('Nome é obrigatório');
   });
 
   it('deve falhar quando o e-mail for inválido', () => {
@@ -34,9 +32,7 @@ describe('CreateUserValidator', () => {
     });
 
     expect(result.success).toBe(false);
-    if (!result.success) {
-      expect(result.error.issues[0].message).toBe('E-mail inválido');
-    }
+    expect(result.error!.issues[0].message).toBe('E-mail inválido');
   });
 
   it('deve falhar quando a senha for menor que 6 caracteres', () => {
@@ -47,8 +43,6 @@ describe('CreateUserValidator', () => {
     });
 
     expect(result.success).toBe(false);
-    if (!result.success) {
-      expect(result.error.issues[0].message).toBe('Senha deve ter no mínimo 6 caracteres');
-    }
+    expect(result.error!.issues[0].message).toBe('Senha deve ter no mínimo 6 caracteres');
   });
 });

@@ -2,7 +2,7 @@ import { IUserRepository } from '../../../../core/repository/user.repository';
 import { User } from '../../../../core/domain/user.entity';
 import { model, Schema } from 'mongoose';
 import { UserDocument } from '../document/user.document';
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcrypt';
 
 const UserSchema = new Schema<UserDocument>(
   {

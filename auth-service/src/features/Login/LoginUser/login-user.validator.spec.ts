@@ -20,9 +20,7 @@ describe('LoginUserValidator', () => {
     });
 
     expect(result.success).toBe(false);
-    if (!result.success) {
-      expect(result.error.issues[0].message).toBe('E-mail inválido');
-    }
+    expect(result.error!.issues[0].message).toBe('E-mail inválido');
   });
 
   it('deve falhar quando a senha estiver vazia', () => {
@@ -32,8 +30,6 @@ describe('LoginUserValidator', () => {
     });
 
     expect(result.success).toBe(false);
-    if (!result.success) {
-      expect(result.error.issues[0].message).toBe('Senha é obrigatória');
-    }
+    expect(result.error!.issues[0].message).toBe('Senha é obrigatória');
   });
 });

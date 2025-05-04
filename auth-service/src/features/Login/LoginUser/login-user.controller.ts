@@ -1,9 +1,9 @@
-import { container } from "tsyringe";
+import { container } from 'tsyringe';
 import { Request, Response } from 'express';
-import { LoginUserRequest } from "./login-user.request";
-import { LoginUserResponse } from "./login-user.response";
-import { LoginUserHandler } from "./login-user.handler";
-import { Result } from "../../../shared/result-pattern";
+import { LoginUserRequest } from './login-user.request';
+import { LoginUserResponse } from './login-user.response';
+import { LoginUserHandler } from './login-user.handler';
+import { Result } from '../../../shared/result-pattern';
 
 export const LoginUserController = {
   login: async (

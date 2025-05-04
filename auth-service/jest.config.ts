@@ -7,7 +7,7 @@ const config: Config = {
     '**/src/**/*.spec.ts'
   ],
   moduleFileExtensions: ['ts', 'js', 'json'],
-  setupFilesAfterEnv: ['<rootDir>/tests/setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/tests/setup.test.ts'],
   transform: {
     '^.+\\.ts$': ['ts-jest', { tsconfig: './tsconfig.json' }],
   },

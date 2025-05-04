@@ -1,5 +1,5 @@
-import { faker } from "@faker-js/faker/.";
-import { CreateUserRequest } from "../../src/features/User/CreateUser/create-user.validator";
+import { faker } from '@faker-js/faker/.';
+import { CreateUserRequest } from '../../src/features/User/CreateUser/create-user.validator';
 
 export class CreateUserBuilder {
     private request: CreateUserRequest = {

@@ -1,4 +1,4 @@
-import { BaseDocument } from "./base.document";
+import { BaseDocument } from './base.document';
 
 export interface UserDocument extends BaseDocument {
     name: string;

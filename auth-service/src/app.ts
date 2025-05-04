@@ -9,7 +9,7 @@ const app = express();
 registerDependencies();
 
 app.use(express.json());
-app.use(httpLogger)
+app.use(httpLogger);
 app.use(routes);
 
 app.get('/health', (req, res) => {
