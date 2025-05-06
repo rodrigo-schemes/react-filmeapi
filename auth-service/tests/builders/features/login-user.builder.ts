@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker/.';
-import { LoginUserRequest } from '../../src/features/Login/LoginUser/login-user.validator';
+import { LoginUserRequest } from '../../../src/features/Login/LoginUser/login-user.validator';
 
 export class LoginUserBuilder {
 	private request: LoginUserRequest = {

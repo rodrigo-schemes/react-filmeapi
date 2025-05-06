@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { Result } from '../result-pattern';
-import { logger } from '../logger/logger';
+import { Result } from '../../utils/result/result-pattern';
+import { logger } from '../Logger/logger';
 
 export function errorHandler(err: any, _req: Request, res: Response, _next: NextFunction): void {
 	logger.error('Erro inesperado:', err);

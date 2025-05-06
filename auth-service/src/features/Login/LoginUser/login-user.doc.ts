@@ -3,7 +3,7 @@
  * /login:
  *   post:
  *     tags:
- *       - Auth
+ *       - Login
  *     summary: Realiza o login do usuário
  *     requestBody:
  *       required: true
@@ -62,7 +62,7 @@
  *                   type: array
  *                   items:
  *                     type: string
- *                   example: ["'E-mail inválido", "Senha é obrigatória"]
+ *                   example: ["E-mail inválido", "Senha é obrigatória"]
  *       429:
  *         description: Muitas requisições — limite excedido
  */

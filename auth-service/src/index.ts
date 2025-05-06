@@ -5,7 +5,7 @@ dotenv.config();
 
 import app from './app';
 import connectToDatabase from './infra/db/mongoose/mongoose.connect';
-import { logger } from './shared/logger/logger';
+import { logger } from './shared/middlewares/Logger/logger';
 
 const port = process.env.PORT || 3000;
 

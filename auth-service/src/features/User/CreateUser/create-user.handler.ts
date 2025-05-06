@@ -1,6 +1,6 @@
 import { CreateUserRequest } from './create-user.request';
 import { CreateUserResponse } from './create-user.response';
-import { Result } from '../../../shared/result-pattern';
+import { Result } from '../../../shared/utils/result/result-pattern';
 import { User } from '../../../core/domain/user.entity';
 import { IUserRepository } from '../../../core/repository/user.repository';
 import { inject, injectable } from 'tsyringe';

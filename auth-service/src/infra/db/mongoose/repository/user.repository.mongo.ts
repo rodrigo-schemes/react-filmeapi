@@ -36,4 +36,24 @@ export class UserRepository implements IUserRepository {
 
 		return new User(user.name, user.email, user.password, user.id);
 	}
+
+	async findAll({ page, limit }: { page: number; limit: number }): Promise<User[]> {
+		const skip = (page - 1) * limit;
+
+		const docs = await UserModel.find().skip(skip).limit(limit).sort({ createdAt: -1 }).exec();
+
+		return docs.map((doc) =>
+			User.restore({
+				id: doc._id.toString(),
+				name: doc.name,
+				email: doc.email,
+				password: doc.password,
+				createdAt: doc.createdAt,
+			}),
+		);
+	}
+
+	async count(): Promise<number> {
+		return UserModel.countDocuments({});
+	}
 }

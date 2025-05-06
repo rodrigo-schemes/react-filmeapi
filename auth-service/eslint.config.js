@@ -4,6 +4,7 @@ import js from '@eslint/js';
 import jest from 'eslint-plugin-jest';
 import prettierConfig from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
+import unusedImports from 'eslint-plugin-unused-imports';
 
 export default [
 	js.configs.recommended,
@@ -28,11 +29,12 @@ export default [
 		plugins: {
 			'@typescript-eslint': eslintPluginTs,
 			prettier: prettierPlugin,
+			'unused-imports': unusedImports,
 		},
 		rules: {
 			...prettierConfig.rules,
 			'prettier/prettier': ['error'],
-			'@typescript-eslint/no-unused-vars': ['warn'],
+			'unused-imports/no-unused-imports': 'error',
 			'no-unused-vars': ['warn'],
 			'@typescript-eslint/no-explicit-any': ['warn'],
 			'@typescript-eslint/explicit-function-return-type': 'off',
@@ -43,7 +45,7 @@ export default [
 	},
 	{
 		// Configurações específicas para testes
-		files: ['**/*.spec.ts', '**/*.test.ts'],
+		files: ['**/*.spec.ts', '**/*.test.ts', '**/*.mock.ts'],
 		plugins: {
 			jest,
 		},

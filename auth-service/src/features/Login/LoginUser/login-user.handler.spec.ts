@@ -3,8 +3,9 @@ import { IUserRepository } from '../../../core/repository/user.repository';
 import bcrypt from 'bcrypt';
 import { JwtService } from '../../../shared/services/jwt/jwt.service';
 import { faker } from '@faker-js/faker';
-import { LoginUserBuilder } from '../../../../tests/builders/login-user.builder';
-import { User } from '../../../core/domain/user.entity';
+import { LoginUserBuilder } from '../../../../tests/builders/features/login-user.builder';
+import { makeUserRepositoryMock } from '../../../../tests/mocks/user-repository.mock';
+import { UserBuilder } from '../../../../tests/builders/domain/user.builder';
 
 describe('LoginUserHandler', () => {
 	let handler: LoginUserHandler;
@@ -16,10 +17,7 @@ describe('LoginUserHandler', () => {
 	};
 
 	beforeEach(() => {
-		userRepository = {
-			findByEmail: jest.fn(),
-			create: jest.fn(),
-		};
+		userRepository = makeUserRepositoryMock();
 
 		handler = new LoginUserHandler(userRepository);
 	});
@@ -36,7 +34,7 @@ describe('LoginUserHandler', () => {
 
 	it('deve falhar quando a senha estiver incorreta', async () => {
 		const login = new LoginUserBuilder().build();
-		const fakeUser = User.create('Rodrigo', login.email, 'senha_hash');
+		const fakeUser = new UserBuilder().withPassword('senha_hash').build();
 		userRepository.findByEmail.mockResolvedValue(fakeUser);
 
 		(jest.spyOn(bcrypt, 'compare') as jest.Mock).mockResolvedValue(false);

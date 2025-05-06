@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { logger } from '../logger/logger';
+import { logger } from '../Logger/logger';
 
 export const httpLogger = (req: Request, res: Response, next: NextFunction) => {
 	const { method, originalUrl } = req;

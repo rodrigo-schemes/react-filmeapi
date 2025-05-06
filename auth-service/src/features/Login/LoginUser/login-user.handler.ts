@@ -1,4 +1,4 @@
-import { Result } from '../../../shared/result-pattern';
+import { Result } from '../../../shared/utils/result/result-pattern';
 import { IUserRepository } from '../../../core/repository/user.repository';
 import { inject, injectable } from 'tsyringe';
 import { LoginUserResponse } from './login-user.response';

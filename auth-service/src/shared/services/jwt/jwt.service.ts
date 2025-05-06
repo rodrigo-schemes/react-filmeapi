@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { JwtPayload } from './jwt.payload';
 import { TokenResult } from './jwt.result';
-import { logger } from '../../logger/logger';
+import { logger } from '../../middlewares/Logger/logger';
 
 const JWT_SECRET = process.env.JWT_SECRET as string;
 const JWT_EXPIRES_IN_SECONDS = 3600;

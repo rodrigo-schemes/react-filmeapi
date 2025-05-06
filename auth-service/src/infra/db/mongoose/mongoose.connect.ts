@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { logger } from '../../../shared/logger/logger';
+import { logger } from '../../../shared/middlewares/Logger/logger';
 
 const connectToDatabase = async (): Promise<void> => {
 	const uri = process.env.MONGO_URI;

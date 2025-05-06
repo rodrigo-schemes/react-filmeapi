@@ -1,8 +1,8 @@
 import express from 'express';
 import routes from './routes';
-import { errorHandler } from './shared/middlewares/error-handler';
-import { registerDependencies } from './shared/container';
-import { httpLogger } from './shared/middlewares/http-logger';
+import { errorHandler } from './shared/middlewares/ErrorHandler/error-handler';
+import { registerDependencies } from './shared/config/dependency-injection.container';
+import { httpLogger } from './shared/middlewares/Logger/http-logger';
 import { swaggerOptions } from './shared/docs/swagger.config';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';

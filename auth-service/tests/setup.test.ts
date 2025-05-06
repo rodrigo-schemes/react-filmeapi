@@ -8,6 +8,26 @@ import mongoose from 'mongoose';
 
 let mongo: MongoMemoryServer;
 
+jest.mock('winston', () => {
+	const originalWinston = jest.requireActual('winston');
+
+	const fakeLogger = {
+		info: jest.fn(),
+		warn: jest.fn(),
+		error: jest.fn(),
+		debug: jest.fn(),
+	};
+
+	return {
+		...originalWinston,
+		createLogger: jest.fn(() => fakeLogger),
+		transports: {
+			Console: jest.fn(),
+		},
+		format: originalWinston.format,
+	};
+});
+
 beforeAll(async () => {
 	mongo = await MongoMemoryServer.create();
 	const uri = mongo.getUri();

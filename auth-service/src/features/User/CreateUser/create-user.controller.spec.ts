@@ -1,7 +1,7 @@
 import request from 'supertest';
 import app from '../../../app';
 import { UserSeed } from '../../../../tests/seeds/user.seed';
-import { CreateUserBuilder } from '../../../../tests/builders/create-user.builder';
+import { CreateUserBuilder } from '../../../../tests/builders/features/create-user.builder';
 import { UserModel } from '../../../infra/db/mongoose/repository/user.repository.mongo';
 
 describe('CreateUserController', () => {

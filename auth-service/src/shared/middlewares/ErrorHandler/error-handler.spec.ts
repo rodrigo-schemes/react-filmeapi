@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../../app';
+import app from '../../../app';
 
 describe('Middleware - Error Handler', () => {
 	it('deve retornar 500 quando uma exceção for lançada', async () => {

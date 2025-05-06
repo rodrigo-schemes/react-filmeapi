@@ -1,17 +1,15 @@
 import { CreateUserHandler } from './create-user.handler';
 import { IUserRepository } from '../../../core/repository/user.repository';
 import { User } from '../../../core/domain/user.entity';
-import { CreateUserBuilder } from '../../../../tests/builders/create-user.builder';
+import { CreateUserBuilder } from '../../../../tests/builders/features/create-user.builder';
+import { makeUserRepositoryMock } from '../../../../tests/mocks/user-repository.mock';
 
 describe('CreateUserHandler', () => {
-	let repository: jest.Mocked<IUserRepository>;
 	let handler: CreateUserHandler;
+	let repository: jest.Mocked<IUserRepository>;
 
 	beforeEach(() => {
-		repository = {
-			findByEmail: jest.fn(),
-			create: jest.fn(),
-		};
+		repository = makeUserRepositoryMock();
 		handler = new CreateUserHandler(repository);
 	});
 
